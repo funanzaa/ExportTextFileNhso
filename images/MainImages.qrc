@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="images">
+    <file>user-16.png</file>
+    <file>logo.png</file>
+    <file>outline_file_upload_black_48dp.png</file>
+  </qresource>
+</RCC>

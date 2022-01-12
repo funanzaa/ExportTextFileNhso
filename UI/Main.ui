@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>915</width>
+    <height>536</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>915</width>
+    <height>536</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>915</width>
+    <height>536</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Export e-Claim v.1.0.0</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../images/MainImages.qrc">
+    <normaloff>:/images/logo.png</normaloff>:/images/logo.png</iconset>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="2" column="0" colspan="18">
+     <widget class="QLabel" name="label_show">
+      <property name="font">
+       <font>
+        <family>TH SarabunPSK</family>
+        <pointsize>17</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="18">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="title">
+       <string>16 File</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string>Select All</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="checkBox_ins">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>INS แฟ้มข้อมูลผู้มีสิทธิการรักษาพยาบาล </string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="checkBox_idx">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>IDX มาตรฐานแฟ้มข้อมูลวินิจฉัยโรคผู้ป่วยใน</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="checkBox_pat">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>PAT แฟ้มข้อมูลผู้ป่วยกลาง </string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="checkBox_iop">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>IOP แฟ้มข้อมูลหัตถการผู้ป่วยใน</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="checkBox_opd">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>OPD แฟ้มข้อมูลการมารับบริการผู้ป่วยนอก</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="checkBox_cht">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>CHT แฟ้มข้อมูลการเงิน (แบบสรุป)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="checkBox_orf">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>ORF แฟ้มข้อมูลผู้ป่วยนอกที่ต้องส่งต่อ</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QCheckBox" name="checkBox_cha">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>CHA แฟ้มข้อมูลการเงิน (แบบรายละเอียด) </string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QCheckBox" name="checkBox_odx">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>ODX แฟ้มข้อมูลวินิจฉัยโรคผู้ป่วยนอก </string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QCheckBox" name="checkBox_aer">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>AER แฟ้มข้อมูลอุบัติเหตุ ฉุกเฉิน และรับส่งเพื่อรักษา </string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="checkBox_oop">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>OOP แฟ้มข้อมูลหัตถการผู้ป่วยนอก </string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QCheckBox" name="checkBox_adp">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>13</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>ADP แฟ้มข้อมูลค่าใช้จ่ายเพิ่ม และบริการที่ยังไม่ได้จัดหมวด </string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QCheckBox" name="checkBox_ipd">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>IPD แฟ้มข้อมูลผู้ป่วยใน </string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QCheckBox" name="checkBox_lvd">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>LVD แฟ้มข้อมูลกรณีที่ผู้ป่วยมีการลากลับบ้าน (Leave day) </string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QCheckBox" name="checkBox_irf">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>IRF แฟ้มข้อมูลผู้ป่วยในที่ต้องส่งต่อ</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QCheckBox" name="checkBox_dru">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>DRU แฟ้มข้อมูลการใช้ยา</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QCheckBox" name="checkBox_labfu">
+         <property name="font">
+          <font>
+           <family>TH SarabunPSK</family>
+           <pointsize>13</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>LABFU แฟ้มข้อมูลการตรวจทางห้องปฏิบัติการของผู้ป่วยโรคเรื้อรัง</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="9">
+     <widget class="QDateEdit" name="dateEdit_to">
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="locale">
+       <locale language="English" country="UnitedStates"/>
+      </property>
+      <property name="displayFormat">
+       <string>yyyy-mm-dd</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="7">
+     <widget class="QDateEdit" name="dateEdit_from">
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="locale">
+       <locale language="English" country="UnitedStates"/>
+      </property>
+      <property name="displayFormat">
+       <string>yyyy-mm-dd</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+      <property name="currentSectionIndex">
+       <number>0</number>
+      </property>
+      <property name="timeSpec">
+       <enum>Qt::LocalTime</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="6">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>From</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="10">
+     <widget class="QPushButton" name="pushButton">
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Export</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../images/MainImages.qrc">
+        <normaloff>:/images/outline_file_upload_black_48dp.png</normaloff>:/images/outline_file_upload_black_48dp.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="8">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>To</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>915</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Setting</string>
+    </property>
+    <addaction name="action"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <action name="action">
+   <property name="icon">
+    <iconset resource="../images/MainImages.qrc">
+     <normaloff>:/images/user-16.png</normaloff>:/images/user-16.png</iconset>
+   </property>
+   <property name="text">
+    <string>User</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../images/MainImages.qrc"/>
+ </resources>
+ <connections/>
+</ui>
