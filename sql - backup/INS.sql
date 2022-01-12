@@ -1,4 +1,4 @@
---INS 07/10/64 v.1.2
+--INS 12/01/65 v.1.3
 -- มาตรฐานแฟ้มข้อมูลผู้มีสิทธิการรักษาพยาบาล (INS)
 -- Header upper
 with cte1 as (
@@ -35,7 +35,7 @@ select *
 	 else '' end as "INSCL"
 	 ,'' as "SUBTYPE"
 	 ,'' as "CID"
-	 , '' as "DATEIN"
+	 , '11667' as "HCODE"
 	 ,'' as "DATEEXP"
 	 , cte1.hospmain as "HOSPMAIN"
 	 ,cte1.hospsub as "HOSPSUB"

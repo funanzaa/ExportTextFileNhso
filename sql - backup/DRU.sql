@@ -1,4 +1,4 @@
---DRU 15/10/64 v.1.2
+--DRU 15/10/64 v.1.3
 --1.2 แก้ไขดึงเฉพาะสิทธิ์ ใน excel
 select  base_site.base_site_id as "HCODE"
 ,v.hn as "HN"
@@ -18,7 +18,7 @@ select  base_site.base_site_id as "HCODE"
 ,'' as "DRUGREMARK"
 ,'' as "PA_NO"
 ,'' as "TOTCOPAY" -- จำนวนเงินรวม หน่วยเป็นบาท ในส่วนที่เบิกไม่ได้
-,'' as "USE_STATUS" -- หมวดรายการยา
+,case when v.an = '' then '1' else '2' end as "USE_STATUS" -- หมวดรายการยา
 ,'' as "TOTAL"
 ,'' as "SIGCODE" --รหัสวิธีใช้ยา (ถ้ามี) 
 ,'' as "SIGTEXT" -- วิธีใช้ยา (ถ้ามี) 

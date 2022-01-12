@@ -1,4 +1,4 @@
---ADP 02/01/65 v.1.3
+--ADP 12/01/65 v.1.4
 --code free schedule table 
 select q.hn as "HN"
 ,q.an as "AN"
@@ -20,8 +20,13 @@ select q.hn as "HN"
 ,q.status1 as "STATUS1"
 ,q.bi  as "BI"
 ,q.clinic as "CLINIC"
-,q.itemsrc as "ITEMSRC"
+--,q.itemsrc as "ITEMSRC"
+,'2' as "ITEMSRC"
 ,q.provider as "PROVIDER"
+,'' as "GRAVIDA"
+,'' as "GA_WEEK"
+,'' as "DCIP/E_SCREEN"
+,'' as "LMP"
 from(
 select v.hn as hn
 		,v.an as AN
@@ -98,7 +103,7 @@ select v.hn as hn
 			where priority = '1') get_plan on v.visit_id = get_plan.visit_id 
 		left join base_billing_group on order_item.base_billing_group_id = base_billing_group.base_billing_group_id 
 		left join patient p on v.patient_id = p.patient_id 
-  where v.visit_date::date >= {0}
+    where v.visit_date::date >= {0}
     and v.visit_date::date <= {1}
 and v.financial_discharge <> '0' --ค้างชำระ	
 ) q
