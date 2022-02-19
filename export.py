@@ -332,6 +332,7 @@ class Ui_export(object):
 
         if self.checkBox_opd.isChecked():
             re_export = exportFile.export('OPD', dateFrom, dateto, dir)
+            logs_export = exportFile.createLog(dateFrom,dateto)
             nameFile.append('OPD')
             status = re_export
 

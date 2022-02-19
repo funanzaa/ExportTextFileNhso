@@ -1,4 +1,4 @@
-	--AER 02/01/65 v.1.1
+	--AER 18/01/65 v.1.3
 	select q.hn as "HN"
 	,q.an as "AN"
 	,q.dateopd as "DATEOPD"
@@ -27,7 +27,7 @@
 		,v.an as AN
 		,to_char(v.visit_date::date,'yyyymmdd') as DATEOPD
 		,visit_payment.card_id as AUTHAE
-	    ,attending_physician.base_department_id
+	   -- ,attending_physician.base_department_id
 	    ,v.plan_code
 	    ,v.description
 	    ,v.visit_id
@@ -45,10 +45,8 @@
 	--	,v.visit_id
 		from (
 					with cte1 as 
-						(
-							select q.*
-							,case when q.base_plan_group_code in ('CHECKUP') and q.plan_code in ('PCP006') then 'UC'  
-								  when q.base_plan_group_code in ('Model5','UC') then 'UC' end as chk_plan
+						(select q.*
+							,case when q.base_plan_group_code in ('Model5','UC') then 'UC' end as chk_plan 
 							from (
 								select v.*,base_plan_group.base_plan_group_code,plan.plan_code,plan.description 
 								from visit v 
@@ -56,21 +54,20 @@
 								left join base_plan_group on visit_payment.base_plan_group_id = base_plan_group.base_plan_group_id and base_plan_group.base_plan_group_code in ('Model5','UC','CHECKUP') 
 								left join plan on visit_payment.plan_id = plan.plan_id 
 							) q
-							where q.base_plan_group_code is not null 
+							where q.base_plan_group_code is not null and q.description <> 'นัดรับยา(บัตรทอง)'
 						)
 						select * from cte1 where cte1.chk_plan is not null 
-						and cte1.plan_code in ('MD504','MD505','UC0005','UC0019') 
+						and cte1.plan_code like 'MD5%' or plan_code in ('UC0005','UC0019') --excel file
 			) v 
 			left join visit_payment on v.visit_id = visit_payment.visit_id and visit_payment.priority = '1' 
-			left join attending_physician on v.visit_id = attending_physician.visit_id  AND attending_physician.priority = '1' and base_department_id in ('D0002')
---    where v.visit_date::date >= {0}
---    and v.visit_date::date <= {1}
-			where v.vn in ('6501010031')
+			 where v.visit_date::date >= {0}
+			and v.visit_date::date <= {1}
+			--where v.vn = '6501020047'
 			and v.financial_discharge = '1' 
 			and v.doctor_discharge = '1' 
 			and v.financial_discharge <> '0' 
 		) q
-	where q.base_department_id is not null
+	--where q.base_department_id is not null
 
 	
 	

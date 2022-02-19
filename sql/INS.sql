@@ -1,4 +1,4 @@
---INS 07/10/64 v.1.2
+--INS 18/01/65 v.1.3
 -- มาตรฐานแฟ้มข้อมูลผู้มีสิทธิการรักษาพยาบาล (INS)
 -- Header upper
 with cte1 as (
@@ -17,9 +17,9 @@ with cte1 as (
 	left join base_plan_group on visit_payment.base_plan_group_id = base_plan_group.base_plan_group_id 
 	left join plan on visit_payment.plan_id = plan.plan_id 
 	,base_site
---	where v.visit_date::date >= {0}
---	and v.visit_date::date <= {1}
-	where v.financial_discharge = '1' --จำหน่ายทางการเงินแล้ว
+	where v.visit_date::date >= {0}
+	and v.visit_date::date <= {1}
+	and v.financial_discharge = '1' --จำหน่ายทางการเงินแล้ว
 	and v.doctor_discharge = '1' --จำหน่ายทางการแพทย์แล้ว
 	--and v.fix_visit_type_id = '0' --ประเภทการเข้ารับบริการ 0 ผู้ป่วยนอก,1 ผู้ป่วยใน
 	and visit_payment.priority = '1' 
@@ -31,11 +31,11 @@ select *
 	select cte1.hn as "HN"
 	,case when cte1.base_plan_group_code = 'UC' then 'UCS' 
 	 when  cte1.base_plan_group_code = 'Model5' then 'UCS'
-	 when  cte1.base_plan_group_code = 'CHECKUP' and cte1.plan_code = 'PCP006' then 'UCS'  -- check UC > CHECKUP and  PCP006
+	 --when  cte1.base_plan_group_code = 'CHECKUP' and cte1.plan_code = 'PCP006' then 'UCS'  -- check UC > CHECKUP and  PCP006
 	 else '' end as "INSCL"
 	 ,'' as "SUBTYPE"
 	 ,'' as "CID"
-	 , '' as "DATEIN"
+	 , '11667' as "HCODE"
 	 ,'' as "DATEEXP"
 	 , cte1.hospmain as "HOSPMAIN"
 	 ,cte1.hospsub as "HOSPSUB"
@@ -53,5 +53,4 @@ select *
 	from cte1
 )q 
 where q."INSCL" <> '' -- สิทธิ์ที่ไม่เข้าเงื่่อนไข
-and q."SEQ" in ('6501010031')
 order by q."SEQ"

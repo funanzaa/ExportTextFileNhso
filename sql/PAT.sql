@@ -1,8 +1,5 @@
---PAT 15/10/64 v.1.5
+--PAT 18/01/65 v.1.6
 -- มาตรฐานแฟ้มข้อมูลผู้ป่วยกลาง (PAT) 
--- v.1.3 ตัด colum dup
--- v.1.4 ตัด fname,lname tab
---1.5 แก้ไขดึงเฉพาะสิทธิ์ ใน excel
 with cte1 as 
 (
 	select base_site.base_site_id 
@@ -26,17 +23,16 @@ with cte1 as
 	 from (
 			with cte1 as 
 				(
-					select q.*
-					,case when q.base_plan_group_code in ('CHECKUP') and q.plan_code in ('PCP006') then 'UC'  -- check CHECKUP => PCP006 
-						  when q.base_plan_group_code in ('Model5','UC') then 'UC' end as chk_plan -- check 'Model5','UC' => UC
-					from (
-						select v.*,base_plan_group.base_plan_group_code,plan.plan_code 
-						from visit v 
-						left join visit_payment on v.visit_id = visit_payment.visit_id and visit_payment.priority = '1'
-						left join base_plan_group on visit_payment.base_plan_group_id = base_plan_group.base_plan_group_id and base_plan_group.base_plan_group_code in ('Model5','UC','CHECKUP') -- สิทธิ์ UC
-						left join plan on visit_payment.plan_id = plan.plan_id 
-					) q
-					where q.base_plan_group_code is not null 
+							select q.*
+							,case when q.base_plan_group_code in ('Model5','UC') then 'UC' end as chk_plan 
+							from (
+								select v.*,base_plan_group.base_plan_group_code,plan.plan_code,plan.description 
+								from visit v 
+								left join visit_payment on v.visit_id = visit_payment.visit_id and visit_payment.priority = '1'
+								left join base_plan_group on visit_payment.base_plan_group_id = base_plan_group.base_plan_group_id and base_plan_group.base_plan_group_code in ('Model5','UC','CHECKUP') 
+								left join plan on visit_payment.plan_id = plan.plan_id 
+							) q
+							where q.base_plan_group_code is not null and q.description <> 'นัดรับยา(บัตรทอง)'
 				)
 				select * from cte1 where cte1.chk_plan is not null 
 	) v --เฉพาะ visit ที่เป็นสิทธิ์ UC ตาม Excel 
@@ -46,11 +42,10 @@ with cte1 as
 	left join fix_occupation occupation on p.fix_occupation_id = occupation.fix_occupation_id 
 	left join fix_nationality nationality on p.fix_nationality_id = nationality.fix_nationality_id 
 	,base_site
-    --where v.visit_date::date >= {0}
-    --and v.visit_date::date <= {1}
-	where v.financial_discharge = '1' --จำหน่ายทางการเงินแล้ว
+    where v.visit_date::date >= {0}
+    and v.visit_date::date <= {1}
+	and v.financial_discharge = '1' --จำหน่ายทางการเงินแล้ว
 	and v.doctor_discharge = '1' --จำหน่ายทางการแพทย์แล้ว
-	and v.vn in ('6501010031')
 	order by v.vn 
 --and v.visit_id = '121090107433621501'
 )

@@ -7,7 +7,7 @@ from messagesBox import *
 from ReadDB import *
 
 
-version = 'v.1.0.0'
+version = 'v.1.0.1'
 
 class Ui_Login(object):
     def setupUi(self, Login):

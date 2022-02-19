@@ -1,4 +1,4 @@
---ADP 02/01/65 v.1.3
+--ADP 18/01/65 v.1.6
 --code free schedule table 
 select q.hn as "HN"
 ,q.an as "AN"
@@ -20,8 +20,13 @@ select q.hn as "HN"
 ,q.status1 as "STATUS1"
 ,q.bi  as "BI"
 ,q.clinic as "CLINIC"
-,q.itemsrc as "ITEMSRC"
+--,q.itemsrc as "ITEMSRC"
+,'2' as "ITEMSRC"
 ,q.provider as "PROVIDER"
+,'' as "GRAVIDA"
+,'' as "GA_WEEK"
+,'' as "DCIP/E_SCREEN"
+,'' as "LMP"
 from(
 select v.hn as hn
 		,v.an as AN
@@ -63,17 +68,17 @@ select v.hn as hn
 		,'' as PROVIDER 
 			from (
 					with cte1 as 
-						(select q.*
-							,case when q.base_plan_group_code in ('CHECKUP') and q.plan_code in ('PCP006') then 'UC'  
-								  when q.base_plan_group_code in ('Model5','UC') then 'UC' end as chk_plan 
+						(
+							select q.*
+							,case when q.base_plan_group_code in ('Model5','UC') then 'UC' end as chk_plan 
 							from (
-								select v.*,base_plan_group.base_plan_group_code,plan.plan_code 
+								select v.*,base_plan_group.base_plan_group_code,plan.plan_code,plan.description 
 								from visit v 
 								left join visit_payment on v.visit_id = visit_payment.visit_id and visit_payment.priority = '1'
 								left join base_plan_group on visit_payment.base_plan_group_id = base_plan_group.base_plan_group_id and base_plan_group.base_plan_group_code in ('Model5','UC','CHECKUP') 
 								left join plan on visit_payment.plan_id = plan.plan_id 
 							) q
-							where q.base_plan_group_code is not null )
+							where q.base_plan_group_code is not null and q.description <> 'นัดรับยา(บัตรทอง)')
 						select * from cte1 where cte1.chk_plan is not null 
 			) v 
 		left join (
@@ -98,10 +103,10 @@ select v.hn as hn
 			where priority = '1') get_plan on v.visit_id = get_plan.visit_id 
 		left join base_billing_group on order_item.base_billing_group_id = base_billing_group.base_billing_group_id 
 		left join patient p on v.patient_id = p.patient_id 
---  where v.visit_date::date >= {0}
---    and v.visit_date::date <= {1}
-	where v.vn in ('6501010002','6501010042','6501010052','6501010053','6501010057')
+    where v.visit_date::date >= {0}
+    and v.visit_date::date <= {1}
 and v.financial_discharge <> '0' --ค้างชำระ	
 ) q
-where q."type" <> ''	
+where q."type" <> ''-- 
+and q.code <> '9357'
 order by q.dateopd,q.seq
