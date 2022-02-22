@@ -60,6 +60,12 @@ class DataBase:
         connection.close()
         return True
 
+    def checkNone(self, num):
+        if num == None:
+            return 0
+        else:
+            return num
+
     def createLog(self, dateform, dateto):
         now = dt.now()
         s = now.strftime("%Y%m%d_%H%M%S")
@@ -84,11 +90,12 @@ optype 4 = {}
 optype 5 = {}
 optype 6 = {}
 optype 7 = {}
-visit all = {}""".format(dateform, dateto, updated_rows[0][1], updated_rows[0][2]
-                                            , updated_rows[0][3], updated_rows[0][4], updated_rows[0][5]
-                                            , updated_rows[0][6], updated_rows[0][7], updated_rows[0][8], updated_rows[0][0])
+visit all = {}""".format(dateform, dateto, self.checkNone(updated_rows[0][1]), self.checkNone(updated_rows[0][2])
+                                            , self.checkNone(updated_rows[0][3]), self.checkNone(updated_rows[0][4]), self.checkNone(updated_rows[0][5])
+                                            , self.checkNone(updated_rows[0][6]), self.checkNone(updated_rows[0][7]), self.checkNone(updated_rows[0][8]), self.checkNone(updated_rows[0][0]))
             with open(r"logs/{}.txt".format(s), 'w', encoding="utf8") as f:
                 f.write(text)
         except:
             print("Error create Log")
+
 

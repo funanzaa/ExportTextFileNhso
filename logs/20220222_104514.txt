@@ -1,0 +1,12 @@
+
+dateform = 2022-02-22
+dateto = 2022-02-22
+optype 0 = None
+optype 1 = None
+optype 2 = None
+optype 3 = None
+optype 4 = None
+optype 5 = None
+optype 6 = None
+optype 7 = None
+visit all = 0

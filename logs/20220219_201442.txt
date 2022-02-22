@@ -1,0 +1,12 @@
+
+dateform = 2021-10-05
+dateto = 2021-10-05
+optype 0 = 36
+optype 1 = 0
+optype 2 = 5
+optype 3 = 0
+optype 4 = 0
+optype 5 = 1
+optype 6 = 0
+optype 7 = 228
+visit all = 270
