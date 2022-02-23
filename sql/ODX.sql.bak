@@ -1,10 +1,9 @@
---ODX 23/02/65 v.1.5
+--ODX 18/10/65 v.1.4
 --มาตรฐานแฟ้มข้อมูลวินิจฉัยโรคผู้ป่วยนอก (ODX)
 --1.2 แก้ไขดึงเฉพาะสิทธิ์ ใน excel
 --1.3 Header upper
---1.4 check datedx null
 select v.hn as "HN"
-,case when dx10.diagnosis_date is null or dx10.diagnosis_date = '' then dx10.diagnosis_date else to_char(dx10.diagnosis_date::date,'yyyymmdd') end as "DATEDX"
+,to_char(dx10.diagnosis_date::date,'yyyymmdd')  as "DATEDX"
 ,'00100' as "CLINIC" -- default
 ,replace(dx10.icd10_code,'.','') as "DIAG"
 ,dx10.fix_diagnosis_type_id as "DXTYPE"

@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="08a979a9-e13e-4c9e-bc39-290fd56bef80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExportFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExportFile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OPD2110.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_export/OPD2110.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file_export/OPD2110.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/export.py" beforeDir="false" afterPath="$PROJECT_DIR$/export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_export/OPD2110.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -358,6 +358,7 @@ class Ui_export(object):
 
         if self.checkBox_odx.isChecked():
             re_export = exportFile.export('ODX', dateFrom, dateto, dir)
+            print('ODX', dateFrom, dateto, dir)
             nameFile.append('ODX')
             status = re_export
 
